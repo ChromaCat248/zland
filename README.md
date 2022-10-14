@@ -1,6 +1,6 @@
 # zland
 
-zland is a wlroots-based compositor based on the concept of mouse-based manual tiling.
+zland is a Wayland compositor based on the concept of mouse-based manual tiling.
 
 
 ### Technical Breakdown
