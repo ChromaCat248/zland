@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="tile4.svg"
+   sodipodi:docname="tile3.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,8 +25,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.3238075"
-     inkscape:cx="238.3277"
-     inkscape:cy="190.7377"
+     inkscape:cx="349.37103"
+     inkscape:cy="183.18373"
      inkscape:window-width="1920"
      inkscape:window-height="1015"
      inkscape:window-x="1920"
@@ -53,11 +53,11 @@
     <path
        id="rect234-5"
        style="fill:#3f736e;fill-opacity:1;stroke:#000000;stroke-width:1.982;stroke-dasharray:none;stroke-opacity:1"
-       d="M 65.230644 0.99063721 L 65.230644 44.999837 L 159.05231 44.999837 L 159.05231 0.99063721 L 141.67972 0.99063721 L 112.14148 0.99063721 L 94.768892 0.99063721 L 65.230644 0.99063721 z " />
+       d="M 65.230644 0.99063721 L 65.230644 89.009037 L 94.768892 89.009037 L 112.14148 89.009037 L 112.14148 0.99063721 L 94.768892 0.99063721 L 65.230644 0.99063721 z " />
     <path
        id="rect234-5-6"
        style="fill:#45733f;fill-opacity:1;stroke:#000000;stroke-width:1.982;stroke-dasharray:none;stroke-opacity:1"
-       d="M 65.274052 44.999837 L 65.274052 89.009037 L 94.812301 89.009037 L 112.14148 89.009037 L 141.67972 89.009037 L 159.0089 89.009037 L 159.0089 44.999837 L 65.274052 44.999837 z " />
+       d="M 112.14148 0.99063721 L 112.14148 89.009037 L 141.67972 89.009037 L 159.0089 89.009037 L 159.0089 0.99063721 L 141.67972 0.99063721 L 112.14148 0.99063721 z " />
     <text
        xml:space="preserve"
        transform="scale(0.26458333)"
@@ -77,24 +77,24 @@
     <text
        xml:space="preserve"
        style="font-size:17.6389px;font-family:Carlito;-inkscape-font-specification:Carlito;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.982;stroke-dasharray:none;stroke-opacity:1"
-       x="99.196518"
-       y="28.718407"
+       x="80.18959"
+       y="50.723007"
        id="text2998-3"><tspan
          sodipodi:role="line"
          id="tspan2996-5"
          style="fill:#ffffff;fill-opacity:1;stroke-width:1.982"
-         x="99.196518"
-         y="28.718407">T21</tspan></text>
+         x="80.18959"
+         y="50.723007">T2</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:17.6389px;font-family:Carlito;-inkscape-font-specification:Carlito;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.982;stroke-dasharray:none;stroke-opacity:1"
-       x="99.174988"
-       y="72.727608"
+       x="127.07872"
+       y="50.723007"
        id="text2998-3-2"><tspan
          sodipodi:role="line"
          id="tspan2996-5-9"
          style="fill:#ffffff;fill-opacity:1;stroke-width:1.982"
-         x="99.174988"
-         y="72.727608">T22</tspan></text>
+         x="127.07872"
+         y="50.723007">T3</tspan></text>
   </g>
 </svg>
