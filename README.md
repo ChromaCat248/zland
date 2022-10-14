@@ -16,7 +16,7 @@ Like i3 and sway, zland is a manual tiler. That means that the tiling pattern is
 Splitting the root tile in half gives you two tiles with the root tile as their parent.
 
 
-| ![](svgs/tile3.svg) | ![](svgs/tile4.svg) |
+| ![](svgs/tile4.svg) | ![](svgs/tile3.svg) |
 | - | - |
 | T2 split across | T2 split down the middle |
 
