@@ -16,7 +16,7 @@ fn main() {
         Err(error) => panic!("could not create socket: {} error", error.kind())
     };
 
-    let comp = compositor_init(
+    let (comp, subcomp) = compositor_init(
         &mut display,
         |surface, dispatch_data| {
             println!("{:?}", dispatch_data);
@@ -24,7 +24,7 @@ fn main() {
         },
         None
     );
-    println!("{:?}", comp);
+    println!("{:?} {:?}", comp, subcomp);
 
     // keep program running until killed
     loop {
