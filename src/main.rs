@@ -8,9 +8,14 @@ use smithay::reexports::wayland_server::Display;
 use std::{thread, time};
 //mod tiling;
 
-#[tokio::main]
-async fn main() {
+fn main() {
     let mut display = Display::new();
+    let socket = display.add_socket::<&str>(None);
+    match socket {
+        Ok(()) => println!("Socket created"),
+        Err(error) => panic!("could not create socket: {} error", error.kind())
+    };
+
     let comp = compositor_init(
         &mut display,
         |surface, dispatch_data| {
