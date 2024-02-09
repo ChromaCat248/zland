@@ -13,8 +13,6 @@ use smithay::{
     },
 };
 
-use slog::{crit, o, Drain};
-
 use std::{thread, time};
 
 mod tiling;
@@ -88,18 +86,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>>{
     let display = Rc::new(RefCell::new(Display::new()));
     let state = ZlandState::new(display.clone(), &mut eloop);
 
-    let log = slog::Logger::root(
-        slog_async::Async::default(slog_term::term_full().fuse()).fuse(),
-        o!(),
-    );
-
     let mut calloop_data = CalloopData {
         state,
         display_handle: display,
     };
 
     println!("fgdshiusdfg");
-    winit::winit_init(&mut eloop, &mut calloop_data, log)?;
+    winit::winit_init(&mut eloop, &mut calloop_data)?;
 
     println!("Initialization complete, starting main loop");
     eloop.run(None, &mut calloop_data, |_| {});
