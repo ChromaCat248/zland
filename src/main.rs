@@ -1,33 +1,108 @@
 //! A mouse-controlled tiling wayland compositor.
 //! Written by ChromaCat248.
 
-extern crate smithay;
+#![allow (dead_code, unused)]
 
-use smithay::wayland::compositor::compositor_init;
-use smithay::reexports::wayland_server::Display;
+use std::{rc::Rc, cell::RefCell};
+
+use smithay::{
+    wayland::compositor::compositor_init,
+    reexports::{
+        calloop::EventLoop,
+        wayland_server::Display,
+    },
+};
+
+use slog::{crit, o, Drain};
+
 use std::{thread, time};
-//mod tiling;
 
-fn main() {
-    let mut display = Display::new();
-    let socket = display.add_socket::<&str>(None);
-    match socket {
-        Ok(()) => println!("Socket created"),
-        Err(error) => panic!("could not create socket: {} error", error.kind())
+mod tiling;
+mod state;
+mod winit;
+
+use state::ZlandState;
+
+#[derive(Debug)]
+pub enum ZlandError {
+    UnknownArg,
+}
+
+impl std::fmt::Display for ZlandError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", match self {
+            ZlandError::UnknownArg => "UnknownArg"
+        })
+    }
+}
+
+impl std::error::Error for ZlandError {}
+
+pub struct CalloopData {
+    state: ZlandState,
+    display_handle: Rc<RefCell<Display>>,
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>>{
+ 
+    // parse args
+    // TODO after the compositor works
+    /*
+    let mut args = std::env::args();
+
+    enum LastArg { StartCommand }
+    use LastArg::*;
+    let mut last_arg: Option<LastArg> = None;
+
+    let mut unknown_arg = false;
+    let mut start_command = "kitty".into(); // default init command inside this string
+
+    for current_arg in args.skip(1) {
+        //println!("arg: {}", current_arg);
+        
+        if let Some(x) = last_arg {
+            match x {
+                StartCommand => { start_command = current_arg },
+                _ => {}
+            }
+            last_arg = None;
+            continue;
+        }
+
+        last_arg = Some( match current_arg.as_ref() {
+            "--start-command" => { println!("startcommand"); StartCommand },
+            _ => {
+                println!("unknown argument: {}", current_arg);
+                unknown_arg = true;
+                continue;
+            },
+        });
     };
 
-    let (comp, subcomp) = compositor_init(
-        &mut display,
-        |surface, dispatch_data| {
-            println!("{:?}", dispatch_data);
-            println!("{:?}", surface);
-        },
-        None
-    );
-    println!("{:?} {:?}", comp, subcomp);
+    println!("{}", start_command);
+    if unknown_arg { return Err(Box::new(ZlandError::UnknownArg)) }
+    */
 
-    // keep program running until killed
-    loop {
-        thread::sleep(time::Duration::from_millis(100000));
-    }
+    // initialization
+    let mut eloop: EventLoop<CalloopData> = EventLoop::try_new()?;
+    let display = Rc::new(RefCell::new(Display::new()));
+    let state = ZlandState::new(display.clone(), &mut eloop);
+
+    let log = slog::Logger::root(
+        slog_async::Async::default(slog_term::term_full().fuse()).fuse(),
+        o!(),
+    );
+
+    let mut calloop_data = CalloopData {
+        state,
+        display_handle: display,
+    };
+
+    println!("fgdshiusdfg");
+    winit::winit_init(&mut eloop, &mut calloop_data, log)?;
+
+    println!("Initialization complete, starting main loop");
+    eloop.run(None, &mut calloop_data, |_| {});
+
+    Ok(())
 }
